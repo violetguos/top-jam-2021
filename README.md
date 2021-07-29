@@ -12,3 +12,10 @@ cd top-jam-2021
 npm install
 npm start
 ```
+
+### If npm not installing: 
+
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
