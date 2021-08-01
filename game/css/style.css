@@ -1,5 +1,7 @@
 :root {
     --main-bg-color: #035397;
+    --main-btn-color: #FFAA4C;
+    --main-btn-hover-color: #ac7638;
   }
 body {
     font-family: 'Lato', sans-serif;
@@ -20,26 +22,74 @@ body {
     font-size: 4vw;
 }
 
+
+/* Main Content Stuff here */
 .main-content {
     display: flex;
     justify-content: space-around;
-    
+    align-items: center;
 
 }
 
-.main-content-left {
+.main-content-left, .main-content-right {
+    display: flex;
+    justify-content: center;
 }
+
 .main-content-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     width: 33%;
 }
 
-/* .main-content-middle img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height:100px;
-} */
+.main-content-middle img {
+    height: 250px;
+    width: 250px;
+}
 
-.main-content-right {
+/* Languages Display */
+
+.languages-display {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 2vw;
+}
+
+.languages-display img {
+    width:25px;
+    height:25px;
+}
+
+
+/* Footer Stuff */
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+
+/* Buttons Stuff */
+.btn {
+    background-color: var(--main-btn-color);
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: var(--main-btn-hover-color);
+} 
+
+.left-btn, .right-btn {
+    padding: 3vw;
+    
+}
+.btn-white {
+    color:white;
+}
+.btn-black {
+    color:black;
 }
