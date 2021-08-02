@@ -49,6 +49,15 @@ body {
     width: 250px;
 }
 
+.main-start {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    justify-content: center;
+  }
+
 /* Languages Display */
 
 .languages-display {
