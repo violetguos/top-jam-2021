@@ -86,6 +86,7 @@ body {
 .btn {
     background-color: var(--main-btn-color);
     border-radius: 5px;
+    padding: 3vw;
 }
 
 .btn:hover {
