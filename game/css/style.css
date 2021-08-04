@@ -2,11 +2,21 @@
     --main-bg-color: #035397;
     --main-btn-color: #FFAA4C;
     --main-btn-hover-color: #ac7638;
-  }
+    font-size: 100%;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: 'Lato', sans-serif;
     background: var(--main-bg-color);
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .top-bar {
@@ -86,7 +96,10 @@ body {
 .btn {
     background-color: var(--main-btn-color);
     border-radius: 5px;
-    padding: 3vw;
+    font-size: 2rem;
+    padding: 30px;
+    margin: 0 30px;
+    min-width: 120px;
 }
 
 .btn:hover {
@@ -104,6 +117,17 @@ body {
     color:black;
 }
 
+.bottom-btns-div {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  justify-content: flex-end;
+}
+
 /*buuble for hints*/
 
 
@@ -118,9 +142,9 @@ body {
     padding: 24px;
     text-align: center;
     color: #000;
-  }
+}
   
-  .bubble-bottom-left:before {
+.bubble-bottom-left:before {
     content: "";
     width: 0px;
     height: 0px;
@@ -131,5 +155,34 @@ body {
     border-bottom: 20px solid transparent;
     left: 32px;
     bottom: -24px;
-  }
-  
+}
+
+/* About-us and how-to-play */
+
+.body-alt {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  margin: 0;
+}
+
+.header {
+  width: 70%;
+  height: 229px;
+  margin: 50px auto;
+  background: #FFAA4C;
+  border-radius: 56.5px;
+
+  font-size: 80px;
+  line-height: 229px;
+  text-align: center;
+  color: black;
+}
+
+.misc-text {
+  width: 80%;
+  margin: 1.5rem auto;
+  font-size: 1.5rem;
+  line-height: 45px;
+}
