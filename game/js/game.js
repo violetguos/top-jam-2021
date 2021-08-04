@@ -35,6 +35,8 @@ const word_list_images = [
 let image_iter = 0
 let word_list_answers_iter = 0
 
+document.querySelector('.game-level-result').textContent = 'Click Left Button to Test';
+
 document.querySelector('.left-btn').addEventListener('click', function () {
     document.querySelector('.score-output-p').textContent = String(score);
     document.querySelector('.level-output-p').textContent = String(level);
@@ -51,6 +53,9 @@ document.querySelector('.left-btn').addEventListener('click', function () {
     document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
     document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
     word_list_answers_iter += 1;
+
+
+    
 });
 
 
