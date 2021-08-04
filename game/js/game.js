@@ -33,6 +33,7 @@ const word_list_images = [
 
 
 let image_iter = 0
+let word_list_answers_iter = 0
 
 document.querySelector('.left-btn').addEventListener('click', function () {
     document.querySelector('.score-output-p').textContent = String(score);
@@ -43,7 +44,13 @@ document.querySelector('.left-btn').addEventListener('click', function () {
 
     let level_image = document.querySelector('.main-image');
     level_image.src = `images/words/${word_list_images[image_iter]}`;
-    image_iter+=1;
+    image_iter += 1;
+
+
+    document.querySelector('#english').textContent = word_list_answers[word_list_answers_iter][0];
+    document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
+    document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
+    word_list_answers_iter += 1;
 });
 
 
