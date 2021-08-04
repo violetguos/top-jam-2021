@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <title>What's my Name Game</title>
+    <title>Multilingual learning game</title>
 </head>
 <body>
     <div class="container">
         
         <div class="top-bar">
-            <span class="score-output">Score: 10</span>
-            <span class="level-output">Level: 1/10</span> 
+            <span class="score-output">Score: <span class="score-output-p">0</span></span>
+            <span class="level-output">Level: <span class="level-output-p">1</span>/10</span> 
         </div>
         <div class="game-level-result">You Got This!</div>
         
@@ -26,19 +26,19 @@
                 <button class="btn btn-white left-btn">Aeroplane</button>
             </div>
             <div class="main-content-middle">
-                <span><img src="images/childrens-plane-1789559__340.png" alt="game image" sizes=""></span>
+                <span><img class="main-image" src="images/words/aeroplane.png" alt="game image" sizes=""></span>
             </div>
             <div class="main-content-right">
                 <button class="btn btn-white right-btn">Car</button>
             </div>
         </div>
         <div class="languages-display">
-            <div> <img src="images/1200px-Flag_of_the_United_Kingdom.svg.png" alt="English flag"> Aeroplane</div>
-            <div> <img src="images/1200px-Flag_of_France.svg.png" alt="French Flag"> Avion</div>
-            <div> <img src="images/Spain_flag_300.png" alt="Spanish Flag"> Avión</div>
+            <div> <img src="images/1200px-Flag_of_the_United_Kingdom.svg.png" alt="English flag"> <span id="english"></span></div>
+            <div> <img src="images/1200px-Flag_of_France.svg.png" alt="French Flag"> <span id="french"></span></div>
+            <div> <img src="images/Spain_flag_300.png" alt="Spanish Flag"> <span id="spanish"></span> </div>
         </div>
         <div class="footer">
-            <button class="btn btn-black">Quit</button>
+            <button class="btn btn-black" onclick="location.href='index.html'">Quit</button>
         </div>
     </div>
     <script src="js/game.js"></script>

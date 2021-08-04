@@ -1,0 +1,14 @@
+English, French, Spanish
+Aeroplane, Avion, Avión
+Bank - banque - banco
+good / benefit - bien - bien
+view - vue - vista
+other - autre  - otro
+dual - deux - dos
+circle - cercle - circulo
+all / total - tout - todo
+young / juvenile - jeune - joven
+
+const word_list = {
+    
+}
