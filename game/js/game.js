@@ -23,7 +23,7 @@ const word_list_buttons = [
 ]
 
 const word_list_images = [
-    'aeroplane.png',
+    'all.jpg',
     'bank.png'
 ]
 
@@ -32,12 +32,18 @@ const word_list_images = [
 // level-output-p
 
 
+let image_iter = 0
+
 document.querySelector('.left-btn').addEventListener('click', function () {
     document.querySelector('.score-output-p').textContent = String(score);
     document.querySelector('.level-output-p').textContent = String(level);
 
     level += 1;
     score += 2;
+
+    let level_image = document.querySelector('.main-image');
+    level_image.src = `images/words/${word_list_images[image_iter]}`;
+    image_iter+=1;
 });
 
 
