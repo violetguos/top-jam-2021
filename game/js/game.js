@@ -50,7 +50,6 @@ let level_executed = false;
 const goToNext = () => {
     if (!level_executed) {
         document.querySelector('.game-level-result').textContent = 'Please Finish this Level First'; // respond right answer
-        level_executed = true;
 
     }
 
@@ -61,6 +60,7 @@ const goToNext = () => {
         document.querySelector('.level-output-p').textContent = String(level);
         image_iter += 1;
         score_executed = false;
+        level_executed = false;
         document.querySelector('.languages-display').style.display = "none";
 
 
@@ -95,6 +95,8 @@ const correctButtonEvent = (e) => {
     if (!score_executed) {
         score += 2;
         score_executed = true;
+        level_executed = true;
+
     }
 
     document.querySelector('.languages-display').style.display = "block"; // initially hides 3 languages at bottom. Set to "block" to show
