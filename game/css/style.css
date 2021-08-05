@@ -178,13 +178,13 @@ body {
 
 .header {
   width: 70%;
-  height: 229px;
+  height: 100px;
   margin: 50px auto;
   background: #FFAA4C;
   border-radius: 56.5px;
 
   font-size: 80px;
-  line-height: 229px;
+  line-height: 100px    ;
   text-align: center;
   color: black;
 }
@@ -194,4 +194,8 @@ body {
   margin: 1.5rem auto;
   font-size: 1.5rem;
   line-height: 45px;
+}
+
+.misc-text li {
+    font-size:1.5rem;
 }
