@@ -32,6 +32,13 @@ body {
     font-size: 4vw;
 }
 
+.next-level {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+    
+}
+
 
 /* Main Content Stuff here */
 .main-content {

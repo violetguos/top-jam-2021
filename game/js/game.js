@@ -125,6 +125,7 @@ document.querySelector('.left-btn').addEventListener('click', buttonClick);
 document.querySelector('.right-btn').addEventListener('click', buttonClick);
 
 // beginning content
+document.querySelector('.languages-display').style.display = "none";
 document.querySelector('#english').textContent = word_list_answers[word_list_answers_iter][0];
 document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
 document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
