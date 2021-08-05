@@ -15,17 +15,36 @@ let level = 1;
 
 const word_list_answers = [
     ['Aeroplane', 'Avion', 'Avión'],
-    ['Bank', 'Banque', 'Banco']
+    ['Bank', 'Banque', 'Banco'],
+    ['Good', 'Bien', 'Bien'],
+    ['View', 'Vue', 'Vista'],
+    ['Other', 'Autre', 'Otro'],
+    ['Dual', 'Deux', 'Dos'],
+    ['Circle', 'Cercle', 'Circulo'],
+    ['Young', 'Jeune', 'Joven']
+
 ]
 
 const word_list_buttons = [
     ['Aeroplane', 'Car'],
-    ['Bank', 'Law Office']
+    ['Bank', 'Law Office'],
+    ['Bien', 'Bad'],
+    ['View', 'Blind'],
+    ['Autre', 'Identical'],
+    ['Dos', 'Single'],
+    ['Circle', 'Rectangle'],
+    ['Joven', 'Old'],
 ]
 
 const word_list_images = [
-    'all.jpg',
-    'bank.png'
+    'aeroplane.png',
+    'bank.png',
+    'good.png',
+    'view.jpg',
+    'other.png',
+    'dual.png',
+    'circle.png',
+    'young.png',
 ]
 
 const word_img_answer_lut = {
@@ -43,6 +62,8 @@ let image_iter = 0
 let word_list_answers_iter = 0
 let score_executed = false;
 let level_executed = false;
+let level_image = document.querySelector('.main-image');
+level_image.src = `images/words/${word_list_images[image_iter]}`;
 
 
 
@@ -64,7 +85,6 @@ const goToNext = () => {
         document.querySelector('.languages-display').style.display = "none";
 
 
-        let level_image = document.querySelector('.main-image');
         level_image.src = `images/words/${word_list_images[image_iter]}`;
 
         word_list_answers_iter += 1;
