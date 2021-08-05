@@ -41,6 +41,7 @@ const word_img_answer_lut = {
 
 let image_iter = 0
 let word_list_answers_iter = 0
+let level_executed = false;
 
 
 
@@ -50,6 +51,7 @@ const goToNext = () => {
     level += 1;
     document.querySelector('.level-output-p').textContent = String(level);
     image_iter += 1;
+    level_executed = false;
 
     let level_image = document.querySelector('.main-image');
     level_image.src = `images/words/${word_list_images[image_iter]}`;
@@ -76,7 +78,11 @@ const goToNext = () => {
 const correctButtonEvent = (e) => {
     // the event listener response for the correct answer
     // level += 1;
-    score += 2;
+    if(!level_executed){
+        score += 2;
+        level_executed = true;
+    }
+    
     document.querySelector('.languages-display').style.display = "block"; // initially hides 3 languages at bottom. Set to "block" to show
     document.querySelector('.score-output-p').textContent = String(score);
 
@@ -115,7 +121,7 @@ const buttonClick = (event) => {
     const isCorrect = buttonAnswerCorrect('.' + btnClass);
     if (isCorrect) {
         console.log("answer is correct");
-        document.querySelector('.game-level-result').textContent = 'You Got This!'; // respond right answer
+        document.querySelector('.game-level-result').textContent = 'You Got This! Go to Next Level'; // respond right answer
         return correctButtonEvent(event);
     }
     else {
