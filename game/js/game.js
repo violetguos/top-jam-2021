@@ -41,35 +41,49 @@ const word_img_answer_lut = {
 
 let image_iter = 0
 let word_list_answers_iter = 0
+let score_executed = false;
 let level_executed = false;
 
 
 
 // go to the next button
 const goToNext = () => {
-    // document.querySelector('.score-output-p').textContent = String(score);
-    level += 1;
-    document.querySelector('.level-output-p').textContent = String(level);
-    image_iter += 1;
-    level_executed = false;
-
-    let level_image = document.querySelector('.main-image');
-    level_image.src = `images/words/${word_list_images[image_iter]}`;
-
-    word_list_answers_iter += 1;
-    document.querySelector('#english').textContent = word_list_answers[word_list_answers_iter][0];
-    document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
-    document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
-
-    // random sample which one's the correct one
-    if (Math.random() < 0.5) {
-        document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][0];
-        document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][1];
+    if (!level_executed) {
+        document.querySelector('.game-level-result').textContent = 'Please Finish this Level First'; // respond right answer
+        level_executed = true;
 
     }
+
     else {
-        document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][1];
-        document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][0];
+
+        // document.querySelector('.score-output-p').textContent = String(score);
+        level += 1;
+        document.querySelector('.level-output-p').textContent = String(level);
+        image_iter += 1;
+        score_executed = false;
+        document.querySelector('.languages-display').style.display = "none";
+
+
+        let level_image = document.querySelector('.main-image');
+        level_image.src = `images/words/${word_list_images[image_iter]}`;
+
+        word_list_answers_iter += 1;
+        document.querySelector('#english').textContent = word_list_answers[word_list_answers_iter][0];
+        document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
+        document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
+
+        // random sample which one's the correct one
+        if (Math.random() < 0.5) {
+            document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][0];
+            document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][1];
+
+        }
+        else {
+            document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][1];
+            document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][0];
+
+        }
+        document.querySelector('.game-level-result').textContent = 'Let\' Play'; // respond right answer
 
     }
 }
@@ -78,11 +92,11 @@ const goToNext = () => {
 const correctButtonEvent = (e) => {
     // the event listener response for the correct answer
     // level += 1;
-    if(!level_executed){
+    if (!score_executed) {
         score += 2;
-        level_executed = true;
+        score_executed = true;
     }
-    
+
     document.querySelector('.languages-display').style.display = "block"; // initially hides 3 languages at bottom. Set to "block" to show
     document.querySelector('.score-output-p').textContent = String(score);
 
