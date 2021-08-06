@@ -21,7 +21,9 @@ const word_list_answers = [
     ['Other', 'Autre', 'Otro'],
     ['Dual', 'Deux', 'Dos'],
     ['Circle', 'Cercle', 'Circulo'],
-    ['Young', 'Jeune', 'Joven']
+    ['Young', 'Jeune', 'Joven'],
+    ['Horse', 'Cheval', 'Caballo'],
+    ['Warrior', 'Guerrier', 'Guerrero']
 
 ]
 
@@ -34,7 +36,9 @@ const word_list_buttons = {
     "dual": ['Deux', 'Dos'],
     "circle": ['Cercle', 'Circulo'],
     "young": ['Jeune', 'Joven'],
-   
+    "horse": ['Cheval', 'Caballo'],
+    "warrior": ['Guerrier', 'Guerrero']
+
 }
 
 
@@ -47,6 +51,8 @@ const word_list_images = [
     'dual.png',
     'circle.png',
     'young.png',
+    'horse.png',
+    'warrior.jpg'
 ]
 
 
@@ -58,20 +64,20 @@ let level_image = document.querySelector('.main-image');
 level_image.src = `images/words/${word_list_images[image_iter]}`;
 
 
-function getRandomIdx(unwantedIndex, obj){
+function getRandomIdx(unwantedIndex, obj) {
     // get a random element that's not this notIndex
     const len = Object.keys(obj).length;
-    let chosenIdx = Math.floor(Math.random()*len);
+    let chosenIdx = Math.floor(Math.random() * len);
     while (chosenIdx === unwantedIndex) {
-        chosenIdx = Math.floor(Math.random()*len);
+        chosenIdx = Math.floor(Math.random() * len);
     }
     return chosenIdx;
 }
 
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key].toString() === value.toString()) //object[key] == value);
-  }
-  
+}
+
 
 // go to the next button
 const goToNext = () => {
@@ -90,6 +96,14 @@ const goToNext = () => {
         level_executed = false;
         document.querySelector('.languages-display').style.display = "none";
 
+        if (level > 10) {
+            document.querySelector('.game-level-result').textContent = "You Win. Game Over!";
+            document.querySelector('.main-content').style.opacity = "0"; // initially hides 3 languages at bottom. Set to "block" to show
+            document.querySelector('.next-level').style.opacity = "0"; // initially hides 3 languages at bottom. Set to "block" to show
+
+
+        }
+
 
         level_image.src = `images/words/${word_list_images[image_iter]}`;
 
@@ -103,12 +117,12 @@ const goToNext = () => {
         console.log("Object.values(word_list_buttons)[word_list_answers_iter]", Object.values(word_list_buttons)[word_list_answers_iter])
         // random sample which one's the correct one
         if (Math.random() < 0.5) {
-            document.querySelector('.left-btn').textContent =  Object.values(word_list_buttons)[word_list_answers_iter];
+            document.querySelector('.left-btn').textContent = Object.values(word_list_buttons)[word_list_answers_iter];
             document.querySelector('.right-btn').textContent = Object.values(word_list_buttons)[incorrectIndex];
 
         }
         else {
-            document.querySelector('.left-btn').textContent =  Object.values(word_list_buttons)[incorrectIndex];
+            document.querySelector('.left-btn').textContent = Object.values(word_list_buttons)[incorrectIndex];
             document.querySelector('.right-btn').textContent = Object.values(word_list_buttons)[word_list_answers_iter];
 
         }
