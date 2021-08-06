@@ -25,37 +25,29 @@ const word_list_answers = [
 
 ]
 
-const word_list_buttons = [
-    ['Aeroplane', 'Car'],
-    ['Bank', 'Law Office'],
-    ['Bien', 'Bad'],
-    ['View', 'Blind'],
-    ['Autre', 'Identical'],
-    ['Dos', 'Single'],
-    ['Circle', 'Rectangle'],
-    ['Joven', 'Old'],
-]
+const word_list_buttons = {
+    "aeroplane": ['Avion', 'Avión'],
+    "bank": ['Banque', 'Banco'],
+    "good": ['Bien', 'Bien'],
+    "view": ['Vue', 'Vista'],
+    "other": ['Autre', 'Otro'],
+    "dual": ['Deux', 'Dos'],
+    "circle": ['Cercle', 'Circulo'],
+    "young": ['Jeune', 'Joven'],
+   
+}
+
 
 const word_list_images = [
     'aeroplane.png',
     'bank.png',
     'good.png',
     'view.jpg',
-    'other.png',
+    'other.jpg',
     'dual.png',
     'circle.png',
     'young.png',
 ]
-
-const word_img_answer_lut = {
-    "aeroplane": {
-        answer: ['Aeroplane', 'Avion', 'Avión'],
-        buttons: ['Aeroplane', 'Car'],
-        image: 'aeroplane.png'
-    }
-}
-
-
 
 
 let image_iter = 0
@@ -66,6 +58,20 @@ let level_image = document.querySelector('.main-image');
 level_image.src = `images/words/${word_list_images[image_iter]}`;
 
 
+function getRandomIdx(unwantedIndex, obj){
+    // get a random element that's not this notIndex
+    const len = Object.keys(obj).length;
+    let chosenIdx = Math.floor(Math.random()*len);
+    while (chosenIdx === unwantedIndex) {
+        chosenIdx = Math.floor(Math.random()*len);
+    }
+    return chosenIdx;
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key].toString() === value.toString()) //object[key] == value);
+  }
+  
 
 // go to the next button
 const goToNext = () => {
@@ -92,15 +98,18 @@ const goToNext = () => {
         document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
         document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
 
+        const incorrectIndex = getRandomIdx(word_list_answers_iter, word_list_buttons);
+        console.log("word_list_answers_iter ", word_list_answers_iter)
+        console.log("Object.values(word_list_buttons)[word_list_answers_iter]", Object.values(word_list_buttons)[word_list_answers_iter])
         // random sample which one's the correct one
         if (Math.random() < 0.5) {
-            document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][0];
-            document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][1];
+            document.querySelector('.left-btn').textContent =  Object.values(word_list_buttons)[word_list_answers_iter];
+            document.querySelector('.right-btn').textContent = Object.values(word_list_buttons)[incorrectIndex];
 
         }
         else {
-            document.querySelector('.left-btn').textContent = word_list_buttons[word_list_answers_iter][1];
-            document.querySelector('.right-btn').textContent = word_list_buttons[word_list_answers_iter][0];
+            document.querySelector('.left-btn').textContent =  Object.values(word_list_buttons)[incorrectIndex];
+            document.querySelector('.right-btn').textContent = Object.values(word_list_buttons)[word_list_answers_iter];
 
         }
         document.querySelector('.game-level-result').textContent = 'Let\' Play'; // respond right answer
@@ -122,28 +131,18 @@ const correctButtonEvent = (e) => {
     document.querySelector('.languages-display').style.display = "block"; // initially hides 3 languages at bottom. Set to "block" to show
     document.querySelector('.score-output-p').textContent = String(score);
 
-
-    // return goToNext(e); // commenting this out as the player should stay in the current level and check the 3 answers solutions at the bottom before going to next level
 };
 
-const wrongButtonEvent = (e) => {
-    // response for wrong answer
-    // image_iter += 1;
-
-    // let level_image = document.querySelector('.main-image');
-    // level_image.src = `images/words/${word_list_images[image_iter]}`;
-
-    // word_list_answers_iter += 1;
-
-    // document.querySelector('#english').textContent = word_list_answers[word_list_answers_iter][0];
-    // document.querySelector('#french').textContent = word_list_answers[word_list_answers_iter][1];
-    // document.querySelector('#spanish').textContent = word_list_answers[word_list_answers_iter][2];
-}
 
 const buttonAnswerCorrect = (btn) => {
-    const current_choice = document.querySelector(btn).innerText.toLowerCase();
+    const current_btn = document.querySelector(btn).innerText.split(",");
+    console.log(current_btn)
+    const current_en_src = getKeyByValue(word_list_buttons, current_btn);
+    console.log(current_en_src)
     const img_name = document.querySelector('.main-image').src;
-    if (img_name.includes(current_choice)) {
+
+    getKeyByValue
+    if (img_name.includes(current_en_src) || img_name.includes(current_btn[0].toLowerCase())) {
         return true;
     }
     else {
@@ -162,7 +161,6 @@ const buttonClick = (event) => {
     }
     else {
         document.querySelector('.game-level-result').textContent = 'Try Again'; // respond wrong answer
-        // return wrongButtonEvent(event); // commenting this out for now as we want player to win. So he can answer the level after seeing the solution. Can change this later.
     }
 
 
