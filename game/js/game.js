@@ -126,7 +126,7 @@ const goToNext = () => {
             document.querySelector('.right-btn').textContent = Object.values(word_list_buttons)[word_list_answers_iter];
 
         }
-        document.querySelector('.game-level-result').textContent = 'Let\' Play'; // respond right answer
+        document.querySelector('.game-level-result').textContent = 'Let\'s Play'; // respond right answer
 
     }
 }
